@@ -1,18 +1,17 @@
-# react-redux-group-project
-In this project, we used React, Redux and for the sake of data fetching, weather API was used. This versatile API gave us a unique opportunity to find multiple places and their id, code and coordinates. Firstly, we fetched the states and displayed on the screen, then the data was displayed for the state which is clicked. Moreover, the search option was also available for states on the base of their name.
+# Redux-Coordinate-Fetch-App
+In this project, I have created a SPA which fetches all the provinces of Pakistan using API from AccWeather and displays them on the first page alongwith the Level fetched from the same website. Moreover, a search bar makes it easy to search the province. When the user clicks on a specific province, some cities of the province are displayed and their Coordinates (Lat and Lon), all fetched from AccuWeather API.
 
-<h1>Redux : Coordinates Fetch App</h1>
+<h1>Redux Coordinate Fetch App</h1>
 
 <!-- TABLE OF CONTENTS -->
 # 📗 Table of Contents
 
-- [Redux Coordinates Fetch App](#redux-coordinates-fetch)
+- [Redux Coordinate Fetch App](#redux-coordinate-fetch)
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Coordinates Fetch App](#-coordinates-fetch-app)
-    - [How to build the "Coordinates' Fetch application?](#how-to-build-the-coordinates-fetch-application)
-      - [Home](#home)
-      - [Coordiantes](#coordinates)
-    - [Projects list](#projects-list)
+- [📖 Redux Coordinates' Fetch](#-redux-coordinates-fetch)
+    - [How to build the "Redux Coordinates Fetch application?](#how-to-build-redux-coordinates-fetch-application)
+      - [Provinces](#province)
+      - [Cities](#city)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Tools i have used for this project ](#tools-i-have-used-for-this-project-)
@@ -33,99 +32,44 @@ In this project, we used React, Redux and for the sake of data fetching, weather
   - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
-# 📖 Space Travelers' Hub<a name="about-project"></a>
-Space Traveler's Hub is a website that working with the real live data from SpaceX API to build a web application for a company that provides commercial and scientific space travel services. This application will allow users to book rockets and join selected space missions.
+# 📖 Redux Coordinate Fetch App<a name="about-project"></a>
+Redux Coordinate Fetch App is a website working with the real live data from AccuWeather API to build a web application for the use of general public that provide general info services. This application will allow users to view the coordinates of their required province.
 
 <!-- > Describe your project in 1 or 2 sentences. -->
-### How to build the "Space Travelers' Hub" application?
-The Space Travelers' Hub consists of Rockets, Missions, and the My Profile section.
+### How to build the "Coordinates Fetch" application?
+Coordinates Fetch Application consists of two pages. First page displays the provinces of Pakistan and enables the user to fetch according to name, and the second page is displayed after clicking the required province and shows the cities and their coordinates.
 
-#### Rockets /Dragons
-The Rockets section displays a list of all available SpaceX rockets. Users can book each rocket by clicking the reservation button or cancel the previously made booking. 
-<p align="center">
-  <img src="./src/images/space-travelers__rockets.png" alt="rockets" width="600px" />
-</p>
+#### Home Page
+The Home Page fetches the provinces from the API according to the provided country code and their images are taken and attached separately.
 
-#### Missions
-The Missions section displays a list of current missions along with their brief description and participation status. There is also a button next to each mission that allows users to join the selected mission or leave the mission the user joined earlier.
-<p align="center">
-  <img src="./src/images/space-travelers__missions.png" alt="missions" width="600px" />
-</p>
+#### Coordinates Page
+This Page displays the names and coordinates of some cities after fetching the coordinates from AccuWeather API.
 
-#### My Profile
-The My Profile section displays all reserved rockets and space missions.
-<p align="center">
-  <img src="./src/images/space-travelers__my-profile.png" alt="profile" width="600px" />
-</p>
 
 ### Projects list
 - Config & Basic Project Setup: 
   * Create React App
   * Install [React Redux](https://react-redux.js.org/), [Redux Logger](https://www.npmjs.com/package/redux-logger) and [React Router](https://reactrouter.com/web/guides/quick-start).
-  * Download the [free image](https://www.flaticon.com/free-icon/planet_3212567?term=space&page=1&position=19&page=1&position=19&related_id=3212567&origin=style) for the app logo.
-  * Create routes and view components: rockets, missions, my profile.
-    * Use <NavLink /> for the page navigation links and style active class to indicate which section/page user is currently on (underline active navigation link).
-  * Create directories for all Redux state slice files:rockets, missions.
+  * Create routes and view components: Home, Coordinates
+    * Use <Link /> for the page navigation links
+  * Create directories for all Redux state slice files: Home, Coordinates
 
 - Redux: Fetch data and update Redux store
-  * Upon first render fetch data from the SpaceX API endpoints:
-    * Rockets: https://api.spacexdata.com/v4/rockets
-    * Missions: https://api.spacexdata.com/v3/missions
-  * Once the data are fetched, dispatch an action to store the selected data in Redux store:
-  * Rockets:
-    * id
-    * rocket_name
-    * description
-    * flickr_images
-  * Missions:
-    * mission_id
-    * mission_name
-    * description
+  * Upon first render fetch data from the AccuWeather endpoints:
+    * Provinces and their Levels
+    * Coordinates
+  * Once the data are fetched, dispatch an action to store the selected data in Redux store
 
 - Render UI:lists
   * - Use `useSelector()` Redux Hook to select the state slices and render lists of rockets and missions in corresponding routes. i.e.:
+  * Style the whole application "by hand"
 
-  ```javascript
-  // get rockets data from the store
-  const rockets = useSelector((state) => state.rockets)
-  ```
-
-  * Style the whole application "by hand" or you could use [React Bootstrap](https://react-bootstrap.github.io/), a UI library that could speed up the process. This is a popular library and working with its components would be good practice.
-  * Render a list of rockets (as per design). For the image of a rocket use the first image in the array of `flickr_images`.
-  * Render a table with the missions' data (as per design).
   
-- Redux: Write actions and reducers for booking rockets/dragons and joining missions
-  * When a user clicks the "Reserve rocket" button action needs to be dispatched to update the store. You need to get the ID of the reserved rocket and update the state. Remember you mustn't mutate the state. Instead, you need to return a new state object with all rockets, but the selected rocket will have an extra key `reserved` with its value set to `true`. You could use a JS `filter()` or `map()` to set the value of the new state - i.e.:
+- Redux: Write actions and reducers for displaying and searching provinces and cities
+  * When a user loads the page, the provinces are automatically fetched and rendered alongwith their Level which is a numeric value.
 
-  ```javascript
-    const newState = state.map((rocket) => {
-      if (rocket.id !== id) return rocket
-      return { ...rocket, reserved: true }
-    })
-  ```
-
-  * Place all the logics in the reducer. In the React view file, should only dispatch the action with the correct rocket ID as an argument.
-  * Create a reducer and action dispatcher for the "Join Mission" button. The logic here is practically the same as with rockets - you need to pass the mission's ID to the corresponding action and update the missions' state with the selected mission having a new key/value - `reserved: true`.
-
-- Redux: Write actions and reducers for canceling rockets/dragons and leaving missions
-  * Here you need to follow the same logic as with the "Reserve rocket"/"Reserve dragon" and "Join mission" - but you need to set the `reserved` key to `false`.
-  * Dispatch these actions upon click on the corresponding buttons.
-
-- Render UI: conditional components rendering
-  * Rockets that have already been reserved should show a "Reserved" badge and "Cancel reservation" button instead of the default "Reserve rocket" (as per design) .
-  * Dragons that have already been reserved should show a "Reserved" badge and "Cancel reservation" button instead of the default.
-  * Missions that the user has joined already should show a badge "Active Member" instead of the default "NOT A MEMBER" and a button "Leave Mission" instead of the "Join Mission" button (as per design).
-  * Rockets/Dragons and Missions should use the React conditional rendering syntax:
-
-  ```javascript
-  {rocket.reserved && (
-      // render Cancel Rocket button
-  )}
-  ```
-- Render UI: My Profile section
-  * Compose two/three column layout and list ONLY the rockets/dragons reserved and missions joined by the user (as per design):
-    * Render a list of all joined missions (use `filter()`).
-    * Render a list of all reserved rockets (use `filter()`).
+  * Place all the logics in the reducer. In the React view file, should only dispatch the action with the correct data.
+  * Create a reducer and action dispatcher Search Option. The logic here is to create a new filter slot in the store, and when the data is received, copy it immediately in the filter slot. Afterwards, when we have to filter the real data, pick the copy from original data and filter it and later on if original data is required, make its copy and it will be available.
 
 - Technical set up\*\*
   * Set up the repository on GitHub and use Gitflow.
@@ -133,11 +77,6 @@ The My Profile section displays all reserved rockets and space missions.
   * Set up testing libraries(React Testing Library and Jest).
   * Do not preserve user data.
   
-
-NOTE: Make sure to add test for all your components and functions.
-NOTE: Make sure only dispatch those actions once and do not add data to store on every re-render (i.e. when changing views / using navigation). 
-NOTE: Rockets is the default view, so must fetch rockets data when the application starts. However, the missions data should only be fetched (once) when a user navigates to the Missions section.
-
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -216,7 +155,7 @@ NOTE: Rockets is the default view, so must fetch rockets data when the applicati
 ## 🚀 Live Demo <a name=""></a>
 
 <!-- > Add a link to your deployed project. -->
-- Click the following url for [... Live Demo ...](https://react-redux-group-project-green.vercel.app/)
+- Click the following url for [... Live Demo ...](https://react-coordinate-app.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -240,8 +179,8 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  cd react-redux-group-project
-  git git@github.com:fickryiman/react-redux-group-project.git
+  cd react-coordinate-app
+  git@github.com:ehmaddd/react-coordinate-app.git
 ```
 
 
@@ -250,7 +189,7 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```sh
-  cd react-redux-group-project
+  cd react-coordinate-app
   npm install
 ```
 
@@ -290,7 +229,7 @@ You can deploy this project using:
 GitHub Pages
 Example:
 ```sh
-git@github.com:fickryiman/react-redux-group-project.git
+git@github.com:ehmaddd/react-coordinate-app.git
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -299,12 +238,6 @@ git@github.com:fickryiman/react-redux-group-project.git
 ## 👥 Authors <a name="authors"></a>
 
 <!-- > Mention all of the collaborators of this project. -->
-
-👤 **Fickry Bil Iman**
-
-- GitHub: [@fickryiman](https://github.com/fickryiman)
-- Facebook: [@fickry.bil.iman](https://www.facebook.com/fickry.bil.iman)
-- LinkedIn: [fickry-bil-iman](https://www.linkedin.com/in/fickry-bil-iman)
 
 👤 **Muhammad Ahmad Saeed**
 
@@ -319,8 +252,8 @@ git@github.com:fickryiman/react-redux-group-project.git
 ## 🔭 Future Features <a name="future-features"></a>
 
 <!-- > Describe 1 - 3 features you will add to the project. -->
-- add login to user with social media auth or google auth
-- create mobile version
+- add more countries, provinces, and cities
+- create desktop version
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -329,7 +262,7 @@ git@github.com:fickryiman/react-redux-group-project.git
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [https://github.com/fickryiman/react-redux-group-project/issues](../../issues/).
+Feel free to check the [https://github.com/ehmaddd/react-coordinate-app/issues](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -338,7 +271,7 @@ Feel free to check the [https://github.com/fickryiman/react-redux-group-project/
 
 <!-- > Write a message to encourage readers to support your project -->
 
-If you like this project please follow me on our GitHub: [@fickryiman](https://github.com/fickryiman), [@ehmaddd](https://github.com/ehmaddd)  or connect on ours LinkedIn: [@fickry-bil-iman](https://www.linkedin.com/in/fickry-bil-iman), [ehmaddd](https://www.linkedin.com/in/ehmaddd/)
+If you like this project please follow me on our GitHub:[@ehmaddd](https://github.com/ehmaddd)  or connect on my LinkedIn: [ehmaddd](https://www.linkedin.com/in/ehmaddd/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -346,24 +279,10 @@ If you like this project please follow me on our GitHub: [@fickryiman](https://g
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 <!-- > Give credit to everyone who inspired your codebase. -->
-First thing first, I would like to say Alhamdulillah, Thanks to my Families, Microverse and Micronaut's, Reviewer's, Thank you for all of the experiences, lesson and everythings.
+First thing first, I would like to say Alhamdulillah, Thanks to my Families, Microverse and Micronaut's, Reviewer's, Thank you for all of the experiences, lesson and everythings. Moreover, I appreciate the efforts of Nelson Sakwa on Behance for creating such a wonderful design which I followed to create this gorgeous app.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-<!-- ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-<!-- > Add at least 2 questions new developers would ask when they decide to use your project. -->
-
-<!-- - **[Question_1]** -->
-
-  <!-- - [Answer_1] -->
-
-<!-- - **[Question_2]** -->
-
-  <!-- - [Answer_2] -->
 
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
@@ -371,18 +290,5 @@ First thing first, I would like to say Alhamdulillah, Thanks to my Families, Mic
 ## 📝 License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
-
-<!-- Creative Commons License - Start -->
-<!-- Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
-
-This work is licensed under a
-[Creative Commons Attribution 4.0 International License][cc-by].
-
-[![CC BY 4.0][cc-by-image]][cc-by]
-
-[cc-by]: http://creativecommons.org/licenses/by/4.0/
-[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
-[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg -->
-<!-- Creative Commons License - End -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
