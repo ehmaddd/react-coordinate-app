@@ -1,0 +1,46 @@
+.city-container {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+}
+
+.city-container li:nth-child(odd) {
+  background-color: #4062a4;
+}
+
+.city-container li:nth-child(even) {
+  background-color: #4269b0;
+}
+
+.stat-heading {
+  background-color: #35548b;
+  color: white;
+  height: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+  padding-left: 2%;
+}
+
+.province-heading-div {
+  height: 15rem;
+  padding: 3rem;
+  background-color: #5687e3;
+}
+
+.prov-img {
+  width: 20rem;
+}
+
+.province-heading-div h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  position: absolute;
+  right: 4rem;
+  top: 7rem;
+  width: 30rem;
+}
+
+#backArrow {
+  position: absolute;
+}
