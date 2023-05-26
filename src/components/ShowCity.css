@@ -1,0 +1,28 @@
+.city-details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 3%;
+  color: #fff;
+}
+
+.city-details h1 {
+  display: inline;
+  width: 80%;
+  font-size: 2.6rem;
+  font-weight: 500;
+  padding: 2%;
+}
+
+.coord-div {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 40%;
+}
+
+.coord-div p {
+  margin: 1rem;
+}

@@ -1,0 +1,97 @@
+body {
+  background-color: #34568a;
+  box-sizing: border-box;
+}
+
+.stat-heading {
+  background-color: #35548b;
+  color: white;
+  height: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+  padding-left: 2%;
+}
+
+.heading-div {
+  width: 100%;
+  height: 300px;
+}
+
+.heading-div h1 {
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  left: 45%;
+  top: 5rem;
+}
+
+.province-ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: auto;
+}
+
+.province-ul li {
+  text-align: center;
+  margin: auto;
+}
+
+.province-ul li:nth-child(1),
+.province-ul li:nth-child(4),
+.province-ul li:nth-child(5),
+.province-ul li:nth-child(8) {
+  background-color: #4369b1;
+}
+
+.province-ul li:nth-child(2),
+.province-ul li:nth-child(3),
+.province-ul li:nth-child(6),
+.province-ul li:nth-child(7) {
+  background-color: #4063a6;
+}
+
+.province-ul li div {
+  width: 29rem;
+  height: 20rem;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.province-heading {
+  margin-top: 8rem;
+}
+
+.province-heading h2 {
+  color: #fff;
+  font-size: 1.7rem;
+  margin: 0;
+  padding-left: 20%;
+  z-index: 1;
+}
+
+.province-level {
+  color: #fff;
+  font-size: 1.3rem;
+  margin: 1rem;
+}
+
+.province-img {
+  width: 15rem;
+  height: 15rem;
+  position: absolute;
+}
+
+.material-symbols-outlined {
+  color: white;
+  font-size: 3.5rem;
+  margin-top: 2%;
+}
