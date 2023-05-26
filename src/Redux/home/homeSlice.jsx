@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const url = 'http://dataservice.accuweather.com/locations/v1/adminareas/PK?apikey=wVYX8onEgfpc4wubmDpbXN1j6YMXbPSH';
+const url = 'http://dataservice.accuweather.com/locations/v1/adminareas/PK?apikey=lCKtqeVD61kGWiTkZig3Hk3lvYFHmxlC';
 
 export const initialState = {
   provinces: [],
